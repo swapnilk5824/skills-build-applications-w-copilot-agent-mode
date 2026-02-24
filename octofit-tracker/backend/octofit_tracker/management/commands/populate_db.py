@@ -10,11 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # Clear all data
-        UserProfile.objects.all().delete()
-        Activity.objects.all().delete()
-        Team.objects.all().delete()
-        Leaderboard.objects.all().delete()
-        WorkoutSuggestion.objects.all().delete()
+        User.objects.all().delete()
         UserProfile.objects.all().delete()
         Activity.objects.all().delete()
         Team.objects.all().delete()

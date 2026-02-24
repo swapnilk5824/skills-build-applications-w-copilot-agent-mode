@@ -113,3 +113,12 @@ if os.environ.get('CODESPACE_NAME'):
     CORS_ALLOWED_ORIGINS.append(f"https://{os.environ.get('CODESPACE_NAME')}-3000.app.github.dev")
 
 AUTH_USER_MODEL = 'auth.User'
+# ...existing code...
+# Allow all CORS origins, methods, and headers
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = ['*']
+CORS_ALLOW_METHODS = ['*']
+
+# Allow all hosts
+ALLOWED_HOSTS = ['*']
