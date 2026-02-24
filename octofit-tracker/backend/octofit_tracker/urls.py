@@ -22,13 +22,18 @@ router.register(r'workouts', views.WorkoutSuggestionViewSet)
 
 @api_view(['GET'])
 def api_root(request):
+    codespace_name = os.environ.get('CODESPACE_NAME')
+    if codespace_name:
+        base_url = f"https://{codespace_name}-8000.app.github.dev"
+    else:
+        base_url = "http://localhost:8000"
     return Response({
-        'users': request.build_absolute_uri('/api/users/'),
-        'profiles': request.build_absolute_uri('/api/profiles/'),
-        'activities': request.build_absolute_uri('/api/activities/'),
-        'teams': request.build_absolute_uri('/api/teams/'),
-        'leaderboards': request.build_absolute_uri('/api/leaderboards/'),
-        'workouts': request.build_absolute_uri('/api/workouts/'),
+        'users': f"{base_url}/api/users/",
+        'profiles': f"{base_url}/api/profiles/",
+        'activities': f"{base_url}/api/activities/",
+        'teams': f"{base_url}/api/teams/",
+        'leaderboards': f"{base_url}/api/leaderboards/",
+        'workouts': f"{base_url}/api/workouts/",
     })
 
 urlpatterns = [
